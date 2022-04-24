@@ -37,16 +37,16 @@ function el(type, attrs, children) {
     const elem = new DomElement(type, attrs, children)
     return elem
 }
-// const tree = el("div", {id: 'name', class: 'lastname'}, [
-//     el("h1", {class: 'lastname'}, 'AAAAAAAAAAAAAA'),
-//     el("h1", {class: 'lastname'}, 'bbbbbbbbbbbbbb'),
-//     el("h1", {class: 'lastname'}, 'CCCCCCCCCCCCCC')
-// ])
-// // const tree = el("div", {id: 'name', class: 'lastname'}, 'AAAAAAAAAAAAAA')
+
+// Test 1
+
 // const tree =
 //     el("div", { "class": "some_classname", "id": "some_id" },
 //         el("span", {}, 'hello')
 //     );
+
+// Test 2
+
 // const tree =
 //     el("div", {},
 //         el("ul", {}, [
@@ -55,6 +55,8 @@ function el(type, attrs, children) {
 //             el("li", {}, "Item 3")
 //         ])
 //     );
+
+// Test 3
 
 const tree =
     el("form", { action: '/some_action' }, [
