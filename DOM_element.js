@@ -1,3 +1,13 @@
+const DIV = 'div'
+const SPAN = 'span'
+const UL = 'ul'
+const LI = 'li'
+const FORM = 'form'
+const LABEL = 'label'
+const BR = 'br'
+const INPUT = 'input'
+
+
 class DomElement {
     constructor(elementName, elementAttributs, children) {
         this.element = '';
@@ -6,14 +16,33 @@ class DomElement {
         this.children = children
     }
     draw() {
-        this.element = document.createElement(this.elementName);
-        if (this.elementAttributs) {
-            for (const key in this.elementAttributs) {
-                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
-                    const element = this.elementAttributs[key];
-                    this.element.setAttribute(key, this.elementAttributs[key])
-                }
-            }
+        switch (this.elementName) {
+            case DIV:
+                this.element = new DivElement(this.elementName, this.elementAttributs, this.children).draw();
+                break;
+            case SPAN:
+                this.element = new SpanElement(this.elementName, this.elementAttributs, this.children).draw();
+                break;
+            case UL:
+                this.element = new UlElement(this.elementName, this.elementAttributs, this.children).draw();
+                break;
+            case LI:
+                this.element = new LiElement(this.elementName, this.elementAttributs, this.children).draw();
+                break;
+            case FORM:
+                this.element = new FormElement(this.elementName, this.elementAttributs, this.children).draw();
+                break;
+            case LABEL:
+                this.element = new LabelElement(this.elementName, this.elementAttributs, this.children).draw();
+                break;
+            case INPUT:
+                this.element = new InputElement(this.elementName, this.elementAttributs, this.children).draw();
+                break;
+            case BR:
+                this.element = new BrElement(this.elementName, this.elementAttributs, this.children).draw();
+                break;
+            default:
+                console.error('choose from this list (DIV, SPAN, UL, LI, FORM, LABEL, BR, INPUT)');
         }
         if (this.children) {
             if (typeof this.children === 'object' && this.children[0]) {
@@ -32,6 +61,182 @@ class DomElement {
     }
 }
 
+class DivElement extends DomElement {
+    constructor(elementName, elementAttributs, children) {
+        super(elementName, elementAttributs, children)
+    }
+    draw() {
+        this.element = document.createElement(this.elementName);
+        if (this.elementAttributs) {
+            for (const key in this.elementAttributs) {
+                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
+                    const divAttr = ['id', 'class', 'style', 'title']
+                    if (!divAttr.some(attr => attr === key)) {
+                        console.error(`div tag cannot have ${key.toLocaleUpperCase()} attribute`);
+                    } else {
+                        this.element.setAttribute(key, this.elementAttributs[key])
+                    }
+                }
+            }
+        }
+        return this.element
+    }
+}
+
+class SpanElement extends DomElement {
+    constructor(elementName, elementAttributs, children) {
+        super(elementName, elementAttributs, children)
+    }
+    draw() {
+        this.element = document.createElement(this.elementName);
+        if (this.elementAttributs) {
+            for (const key in this.elementAttributs) {
+                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
+                    const spanAttr = ['id', 'class', 'style']
+                    if (!spanAttr.some(attr => attr === key)) {
+                        console.error(`span tag cannot have ${key.toLocaleUpperCase()} attribute`);
+                    } else {
+                        this.element.setAttribute(key, this.elementAttributs[key])
+                    }
+                }
+            }
+        }
+        return this.element
+    }
+}
+
+class UlElement extends DomElement {
+    constructor(elementName, elementAttributs, children) {
+        super(elementName, elementAttributs, children)
+    }
+    draw() {
+        this.element = document.createElement(this.elementName);
+        if (this.elementAttributs) {
+            for (const key in this.elementAttributs) {
+                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
+                    const ulAttr = ['id', 'class', 'style']
+                    if (!ulAttr.some(attr => attr === key)) {
+                        console.error(`ul tag cannot have ${key.toLocaleUpperCase()} attribute`);
+                    } else {
+                        this.element.setAttribute(key, this.elementAttributs[key])
+                    }
+                }
+            }
+        }
+        return this.element
+    }
+}
+
+
+class LiElement extends DomElement {
+    constructor(elementName, elementAttributs, children) {
+        super(elementName, elementAttributs, children)
+    }
+    draw() {
+        this.element = document.createElement(this.elementName);
+        if (this.elementAttributs) {
+            for (const key in this.elementAttributs) {
+                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
+                    const liAttr = ['id', 'class', 'style']
+                    if (!liAttr.some(attr => attr === key)) {
+                        console.error(`li tag cannot have ${key.toLocaleUpperCase()} attribute`);
+                    } else {
+                        this.element.setAttribute(key, this.elementAttributs[key])
+                    }
+                }
+            }
+        }
+        return this.element
+    }
+}
+
+class FormElement extends DomElement {
+    constructor(elementName, elementAttributs, children) {
+        super(elementName, elementAttributs, children)
+    }
+    draw() {
+        this.element = document.createElement(this.elementName);
+        if (this.elementAttributs) {
+            for (const key in this.elementAttributs) {
+                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
+                    const formAttr = ['id', 'class', 'action', 'method', 'autocomplete', 'name', 'target', 'accept-charset']
+                    if (!formAttr.some(attr => attr === key)) {
+                        console.error(`form tag cannot have ${key.toLocaleUpperCase()} attribute`);
+                    } else {
+                        this.element.setAttribute(key, this.elementAttributs[key])
+                    }
+                }
+            }
+        }
+        return this.element
+    }
+}
+
+class LabelElement extends DomElement {
+    constructor(elementName, elementAttributs, children) {
+        super(elementName, elementAttributs, children)
+    }
+    draw() {
+        this.element = document.createElement(this.elementName);
+        if (this.elementAttributs) {
+            for (const key in this.elementAttributs) {
+                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
+                    const labelAttr = ['for', 'form']
+                    if (!labelAttr.some(attr => attr === key)) {
+                        console.error(`label tag cannot have ${key.toLocaleUpperCase()} attribute`);
+                    } else {
+                        this.element.setAttribute(key, this.elementAttributs[key])
+                    }
+                }
+            }
+        }
+        return this.element
+    }
+}
+
+class InputElement extends DomElement {
+    constructor(elementName, elementAttributs, children) {
+        super(elementName, elementAttributs, children)
+    }
+    draw() {
+        this.element = document.createElement(this.elementName);
+        if (this.elementAttributs) {
+            for (const key in this.elementAttributs) {
+                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
+                    const inputAttr = ['id', 'class', 'style', 'type', 'value', 'name', 'disabled', 'checked', 'autofocus', 'alt', 'accept']
+                    if (!inputAttr.some(attr => attr === key)) {
+                        console.error(`input tag cannot have ${key.toLocaleUpperCase()} attribute`);
+                    } else {
+                        this.element.setAttribute(key, this.elementAttributs[key])
+                    }
+                }
+            }
+        }
+        return this.element
+    }
+}
+
+class BrElement extends DomElement {
+    constructor(elementName, elementAttributs, children) {
+        super(elementName, elementAttributs, children)
+    }
+    draw() {
+        this.element = document.createElement(this.elementName);
+        if (this.elementAttributs) {
+            for (const key in this.elementAttributs) {
+                if (Object.hasOwnProperty.call(this.elementAttributs, key)) {
+                    const brAttr = ['id', 'class', 'style']
+                    if (!brAttr.some(attr => attr === key)) {
+                        console.error(`br tag cannot have ${key.toLocaleUpperCase()} attribute`);
+                    } else {
+                        this.element.setAttribute(key, this.elementAttributs[key])
+                    }
+                }
+            }
+        }
+        return this.element
+    }
+}
 
 function el(type, attrs, children) {
     const elem = new DomElement(type, attrs, children)
