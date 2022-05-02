@@ -1,0 +1,17 @@
+.average_container {
+    width: 50%;
+    display: flex;
+    position: fixed;
+    right: 0;
+}
+
+.comments_block {
+    margin-left: 20px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
