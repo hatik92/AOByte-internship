@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styles from './average.module.css'
+import styles from './lists.module.css'
 
-class Average extends Component {
+class Lists extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -110,4 +110,4 @@ class Average extends Component {
     }
 }
 
-export default Average;
+export default Lists;

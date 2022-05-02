@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styles from './posts.module.css'
+import styles from './pool.module.css'
 
-class Posts extends Component {
+class Pool extends Component {
     render() {
         return (<div className={styles.posts_container}>
             <h1>POSTS</h1>
@@ -35,4 +35,4 @@ class Posts extends Component {
     }
 }
 
-export default Posts;
+export default Pool;

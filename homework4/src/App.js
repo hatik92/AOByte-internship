@@ -1,8 +1,8 @@
 import './App.css';
 import React from 'react';
 import posts_data from './post-data.json';
-import Posts from './components/posts/Posts';
-import Average from './components/average/Average';
+import Pool from './components/pool/Pool';
+import Lists from './components/lists/Lists';
 
 class App extends React.Component {
   constructor() {
@@ -29,8 +29,8 @@ class App extends React.Component {
   render() {
     return (
       <div className='container'>
-        <Posts posts={this.state.posts} />
-        <Average posts={this.state.posts} onChangeDisabled={this.onChangeDisabled} buttonDisabled={this.state.buttonDisabled} />
+        <Pool posts={this.state.posts} />
+        <Lists posts={this.state.posts} onChangeDisabled={this.onChangeDisabled} buttonDisabled={this.state.buttonDisabled} />
       </div>
     );
   };
