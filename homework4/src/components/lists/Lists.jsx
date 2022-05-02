@@ -12,14 +12,23 @@ class Lists extends Component {
             addButtonDisabled: false
         }
     }
+    averageArray = (arr) => {
+        let total = 0;
+        let count = 0;
+
+        arr.forEach(function (item, index) {
+            total += item;
+            count++;
+        });
+
+        return Math.round(total / count);
+    }
     onAvergeList = (listId) => {
         const arithmetic_average_array = this.props.posts.filter(post => !post.disabled).map(post =>
         ({
             id: post.id,
             disabled: post.disabled,
-            average: post.comments.map(comment =>
-                comment.rate)
-                .reduce((partialSum, a) => partialSum + a, 0)
+            average: this.averageArray(post.comments.map(comment => comment.rate))
         }))
         if (arithmetic_average_array.length > 0) {
             const max_arithmetic_average = Math.max(...arithmetic_average_array.map(el => el.average))
@@ -32,6 +41,7 @@ class Lists extends Component {
                         }
                         : list)
             }))
+            // debugger
             this.props.onChangeDisabled(arithmetic_average_array.filter(el => el.average === max_arithmetic_average)[0].id)
         } else {
             this.setState(() => ({

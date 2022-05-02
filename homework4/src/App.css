@@ -1,3 +1,6 @@
 .container {
   display: flex;
 }
+.pool_block {
+    width: 50%;
+}
