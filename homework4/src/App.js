@@ -9,7 +9,10 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      posts: posts_data,
+      posts: posts_data.map(post => ({
+                ...post,
+                addNewComment: {body: '', rate: 0}
+            })),
       buttonDisabled: false,
       currentPage: 1,
       postPerPage: 4,
@@ -40,6 +43,19 @@ class App extends React.Component {
       searchPost: val
     }))
   }
+  addComment = (body, rate, postId) => {
+    const newCommentObj = {body, rate}
+    this.setState(state => ({
+            ...state,
+            posts: state.posts.map(post => post.id === postId ? {
+                ...post,
+                comments: [
+                    ...post.comments,
+                    newCommentObj
+                ],
+            } : post )
+        }))
+  }
   render() {
     const indexOfLastPost = this.state.currentPage * this.state.postPerPage
     const indexOfFirstPost = indexOfLastPost - this.state.postPerPage
@@ -53,14 +69,14 @@ class App extends React.Component {
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
 
     return (
-      <div className='container'>
+      <div className='post_container'>
         <div className='pool_block'>
           <input
             onChange={(e) => this.handlerSearch(e.target.value)}
             value={this.state.searchPost}
             placeholder='Search...'
           />
-          <Pool posts={currentPosts} />
+          <Pool posts={currentPosts} addComment={this.addComment} />
           <Pagination
             itemsPerPage={this.state.postPerPage}
             data={posts.length}

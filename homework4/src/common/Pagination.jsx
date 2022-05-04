@@ -5,8 +5,7 @@ export class Pagination extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 111, 222, 333, 444, 555, 666, 777, 888, 999, 12, 45, 78, 23, 56, 89, 13, 46, 79, 14, 25, 36, 47, 58, 69, 17, 28, 39],
-      size: 5
+      
     }
   }
 

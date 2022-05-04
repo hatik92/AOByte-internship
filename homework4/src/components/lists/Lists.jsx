@@ -17,7 +17,7 @@ class Lists extends Component {
         let count = 0;
 
         arr.forEach(function (item, index) {
-            total += item;
+            total += +item;
             count++;
         });
 

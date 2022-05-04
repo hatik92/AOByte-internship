@@ -1,0 +1,10 @@
+.comments_block {
+    margin-left: 20px;
+}
+.postDisabled {
+    background-color: rebeccapurple;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
