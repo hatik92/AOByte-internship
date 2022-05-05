@@ -41,7 +41,6 @@ class Lists extends Component {
                         }
                         : list)
             }))
-            // debugger
             this.props.onChangeDisabled(arithmetic_average_array.filter(el => el.average === max_arithmetic_average)[0].id)
         } else {
             this.setState(() => ({
@@ -92,16 +91,21 @@ class Lists extends Component {
     render() {
         return (<div className={styles.average_container}>
             {this.state.lists.map(list => <div key={list.id}>
-                <table>
-                    <thead>
+                <table className='table'>
+                    <thead className='table-dark'>
                         <tr>
-                            <th>Post id</th>
-                            <th>
-                                <button onClick={() => this.onSortList(list.id)}>Sort &#8661;</button>
+                            <th scope="col"></th>
+                            <th scrope="col">
+                                <button className='btn text-light' onClick={() => this.onSortList(list.id)}>Sort &#8661;</button>
                             </th>
-                            <th>
-                                <button onClick={() => this.onAvergeList(list.id)} disabled={this.state.addButtonDisabled}>&#43;</button>
+                            <th scrope="col">
+                                <button className='btn text-light' onClick={() => this.onAvergeList(list.id)} disabled={this.state.addButtonDisabled}>&#43;</button>
                             </th>
+                        </tr>
+                        <tr>
+                            <th scrope="col">Post id</th>
+                            <th scrope="col">Arithmetic average</th>
+                            <th scrope="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,7 +114,7 @@ class Lists extends Component {
                                 <tr key={el.id}>
                                     <td>{el.id}</td>
                                     <td>{el.average}</td>
-                                    <td><button onClick={() => this.onRemoveList(el.id, list.id)}>&#8722;</button></td>
+                                    <td><button className='btn text-danger' onClick={() => this.onRemoveList(el.id, list.id)}>&#8722;</button></td>
                                 </tr>)
                         }
                     </tbody>

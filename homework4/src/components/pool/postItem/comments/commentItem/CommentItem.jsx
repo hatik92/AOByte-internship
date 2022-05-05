@@ -7,10 +7,10 @@ export class CommentItem extends Component {
     body: ''
   }
   onShowReplyForm = () => {
-    this.setState({replyShow: !this.state.replyShow})
+    this.setState({ replyShow: !this.state.replyShow })
   }
   onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value })
   }
   onSubmit = (e) => {
     e.preventDefault();
@@ -30,15 +30,23 @@ export class CommentItem extends Component {
           <p className={rateClassNames}>Rate: {this.props.comment.rate}</p>
         </div>
         <div className="card-body">
-          <h4 className="card-title text-success">Answers</h4>
-          {this.props.comment.answers.map((answer, i) => <p className="card-text" key={i}>{answer.body}</p>)}
+          {this.props.comment.answers.length > 0 && <>
+            <h4 className="card-title text-success">Answers</h4>
+            {this.props.comment.answers.map((answer, i) => <p className="card-text" key={i}>{answer.body}</p>)}
+          </>}
         </div>
         <p className="text-primary" style={{ cursor: 'pointer' }} onClick={this.onShowReplyForm}> {this.state.replyShow ? 'Cancel' : 'Reply'} </p>
         {this.state.replyShow &&
-        <form onSubmit={this.onSubmit}>
-          <input name='body' onChange={this.onChange} />
-          <button>Send</button>
-        </form>}
+          <form onSubmit={this.onSubmit}>
+            <div class="row">
+              <div class="col">
+                <input className='form-control' name='body' onChange={this.onChange} />
+              </div>
+              <div class="col">
+                <button className='btn btn-primary'>Send</button>
+              </div>
+            </div>
+          </form>}
       </div>
     )
   }

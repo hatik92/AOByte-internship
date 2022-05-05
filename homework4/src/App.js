@@ -9,10 +9,7 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      posts: posts_data.map(post => ({
-        ...post,
-        addNewComment: { body: '', rate: 0 }
-      })),
+      posts: posts_data,
       buttonDisabled: false,
       currentPage: 1,
       postPerPage: 4,
@@ -78,9 +75,14 @@ class App extends React.Component {
     const posts = this.state.posts.filter(val => {
       if (this.state.searchPost === "") {
         return val
-      } else if (val.title.toLowerCase().includes(this.state.searchPost.toLowerCase()) || val.body.toLowerCase().includes(this.state.searchPost.toLowerCase())) {
+      } else if (
+        val.title.toLowerCase().includes(this.state.searchPost.toLowerCase()) ||
+        val.body.toLowerCase().includes(this.state.searchPost.toLowerCase()) ||
+        val.comments.some(comment => comment.body.toLowerCase().includes(this.state.searchPost.toLowerCase()))
+      ) {
         return val
       }
+      return false
     })
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
 
@@ -88,6 +90,7 @@ class App extends React.Component {
       <div className='post_container'>
         <div className='pool_block'>
           <input
+            className='form-control'
             onChange={(e) => this.handlerSearch(e.target.value)}
             value={this.state.searchPost}
             placeholder='Search...'
