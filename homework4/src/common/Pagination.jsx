@@ -18,7 +18,7 @@ export class Pagination extends Component {
     return (
       <div className={styles.paginationBlock}>
         <div className={styles.pagination}>
-          <button>&laquo;</button>
+          {/* <button>&laquo;</button> */}
           {pagesArr.map(page =>
             <button
               key={page}
@@ -27,7 +27,7 @@ export class Pagination extends Component {
             >
               {page}
             </button>)}
-          <button>&raquo;</button>
+          {/* <button>&raquo;</button> */}
         </div>
       </div>
     )

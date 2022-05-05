@@ -10,9 +10,9 @@ class App extends React.Component {
     super()
     this.state = {
       posts: posts_data.map(post => ({
-                ...post,
-                addNewComment: {body: '', rate: 0}
-            })),
+        ...post,
+        addNewComment: { body: '', rate: 0 }
+      })),
       buttonDisabled: false,
       currentPage: 1,
       postPerPage: 4,
@@ -44,17 +44,33 @@ class App extends React.Component {
     }))
   }
   addComment = (body, rate, postId) => {
-    const newCommentObj = {body, rate}
+    const newCommentObj = { id: Math.random().toString(36).slice(2), body, rate, answers: [] }
     this.setState(state => ({
-            ...state,
-            posts: state.posts.map(post => post.id === postId ? {
-                ...post,
-                comments: [
-                    ...post.comments,
-                    newCommentObj
-                ],
-            } : post )
-        }))
+      ...state,
+      posts: state.posts.map(post => post.id === postId ? {
+        ...post,
+        comments: [
+          ...post.comments,
+          newCommentObj
+        ],
+      } : post)
+    }))
+  }
+  addAnswer = (body, postId, commentId) => {
+    const newAnswerObj = { body }
+    this.setState(state => ({
+      ...state,
+      posts: state.posts.map(post => post.id === postId ? {
+        ...post,
+        comments: post.comments.map(comment => comment.id === commentId ? {
+          ...comment,
+          answers: [
+            ...comment.answers,
+            newAnswerObj
+          ],
+        } : comment)
+      } : post)
+    }))
   }
   render() {
     const indexOfLastPost = this.state.currentPage * this.state.postPerPage
@@ -76,7 +92,7 @@ class App extends React.Component {
             value={this.state.searchPost}
             placeholder='Search...'
           />
-          <Pool posts={currentPosts} addComment={this.addComment} />
+          <Pool posts={currentPosts} addComment={this.addComment} addAnswer={this.addAnswer} />
           <Pagination
             itemsPerPage={this.state.postPerPage}
             data={posts.length}

@@ -33,14 +33,14 @@ export class PostItem extends Component {
           <div className="card-body">
             <h4 className="card-title">{this.props.post.title}</h4>
             <p className="card-text">{this.props.post.body}</p>
-            <Comments comments={this.props.post.comments} />
+            <Comments comments={this.props.post.comments} addAnswer={this.props.addAnswer} postId={this.props.post.id} />
             <form onSubmit={this.onSubmit} key={this.props.post.id}>
               <input
                 name='body'
                 value={this.state.body}
                 onChange={this.onChange}
               />
-              <span onClick={this.onEmojiShow}>🙂</span>
+              <span onClick={this.onEmojiShow} style={{ cursor: 'pointer' }}>🙂</span>
               {this.state.emojiShow && <Picker onEmojiClick={this.onEmojiClick} />}
               <br />
               <input
