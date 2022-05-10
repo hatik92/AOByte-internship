@@ -8,32 +8,29 @@ const schema = new Schema({
     validators: ['required', 'min:3', 'max:8'],
     message: 'The field must contain min {min} letters'
   },
-  // email: {
-  //   type: 'string',
-  //   validators: 'email'
-  // },
+  email: {
+    type: 'string',
+    validators: ['email']
+  },
   age: {
     type: 'numeric',
     validators: ['required']
   },
-  // passport: {
-  //   type: 'string',
-  //   validators: ['max:9', 'passportValidator'],
-  //   message: 'Invalid phone inputs'
-  // },
-  // website: {
-  //   type: 'string',
-  //   validators: ['url']
-  // },
-  // phoneNumbers: {
-  //   type: 'array[string]',
-  //   validators: 'phone'
-  // }
+  passport: {
+    type: 'string',
+    validators: ['max:9', 'passport'],
+    message: 'Invalid phone inputs'
+  },
+  website: {
+    type: 'string',
+    validators: ['url']
+  },
+  phoneNumbers: {
+    type: 'array[string]',
+    validators: ['phone']
+  }
 });
 
-const validation = ({ error, ...rest }) => {
-  
-};
 
 export class FormCustom extends Component {
   constructor(props) {
@@ -41,14 +38,20 @@ export class FormCustom extends Component {
 
     this.state = {
       contacts: {
-        name: '',
+        firstName: '',
         email: '',
-        password: '',
+        age: '',
+        passport: '',
+        website: '',
+        phoneNumbers: []
       },
       error: {
         firstName: '',
         email: '',
-        age: ''
+        age: '',
+        passport: '',
+        website: '',
+        phoneNumbers: ''
       }
     }
   }
@@ -67,18 +70,16 @@ export class FormCustom extends Component {
     for (const key in errors) {
       if (Object.hasOwnProperty.call(errors, key)) {
         const element = errors[key];
-        if (element.length > 0) {
-          let errorMessages = ''
-          for (let index = 0; index < element.length; index++) {
-            errorMessages += element[index]+', '
-          }
-          this.setState(state => ({
-            error: {
-              ...state.error,
-              [key]: errorMessages
-            }
-          }))
+        let errorMessages = ''
+        for (let index = 0; index < element.length; index++) {
+          errorMessages += element[index]+', '
         }
+        this.setState(state => ({
+          error: {
+            ...state.error,
+            [key]: errorMessages
+          }
+        }))
       }
     }
   }
@@ -87,9 +88,6 @@ export class FormCustom extends Component {
     return "AAA"
   }
   render() {
-
-    const { error } = this.state;
-
     return <>
         <form onSubmit={this.validateHandler}>
           <Input name='firstName' onChange={this.onChange} />
@@ -98,12 +96,12 @@ export class FormCustom extends Component {
           <ErrorMessage name='email' errors={this.state.error.email} />
           <Numeric name='age' onChange={this.onChange} />
           <ErrorMessage name='age' errors={this.state.error.age} />
-          {/* <Passport name='passport' onChange={fanc} />
-          <ErrorMessage name='passport' errors={errors} />
-          <Url name='website' onChange={fanc} />
-          <ErrorMessage name='website' errors={errors} />
-          <PhoneNumbers name='phoneNumbers' onChange={fanc} />
-          <ErrorMessage name='phoneNumbers' errors={errors} /> */}
+          <Passport name='passport' onChange={this.onChange} />
+          <ErrorMessage name='passport' errors={this.state.error.passport} />
+          <Url name='website' onChange={this.onChange} />
+          <ErrorMessage name='website' errors={this.state.error.website} />
+          <PhoneNumbers name='phoneNumbers' onChange={this.onChange} />
+          <ErrorMessage name='phoneNumbers' errors={this.state.error.phoneNumbers} />
           <Button type='submit' />
         </form>
       </>
@@ -131,7 +129,7 @@ const Input = ({name, onChange}) => {
 const Numeric = ({name, onChange}) => {
   return (
     <div>
-      <input name={name} onChange={onChange}/>
+      <input type='number' name={name} onChange={onChange}/>
     </div>
   )
 }
@@ -140,7 +138,31 @@ const Numeric = ({name, onChange}) => {
 const Email = ({name, onChange}) => {
   return (
     <div>
-      <input name={name} onChange={onChange}/>
+      <input type='text' name={name} onChange={onChange}/>
+    </div>
+  )
+}
+
+const Passport = ({name, onChange}) => {
+  return (
+    <div>
+      <input type='text' name={name} onChange={onChange} />
+    </div>
+  )
+}
+
+const Url = ({name, onChange}) => {
+  return (
+    <div>
+      <input type='text' name={name} onChange={onChange} />
+    </div>
+  )
+}
+
+const PhoneNumbers = ({name, onChange}) => {
+  return (
+    <div>
+      <input type='text' name={name} onChange={onChange} />
     </div>
   )
 }

@@ -4,7 +4,6 @@ import posts_data from './post-data.json';
 // import Pool from './components/pool/Pool';
 // import Lists from './components/lists/Lists';
 // import Pagination from './common/Pagination';
-import Form from './form validation/Form';
 import FormCustom from './form validation/FormCustom';
 
 class App extends React.Component {
