@@ -84,9 +84,7 @@ export class FormCustom extends Component {
     }
   }
   onChange = () => {}
-  errors = () => {
-    return "AAA"
-  }
+  
   render() {
     return <>
         <form onSubmit={this.validateHandler}>
