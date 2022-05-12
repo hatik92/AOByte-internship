@@ -12,12 +12,10 @@ export default class Schema {
     this.contacts = contacts
   }
   validate(payload) {
-    console.log(payload);
     const errors = {}
     for (const key in this.contacts) {
       if (Object.hasOwnProperty.call(this.contacts, key)) {
         const element = this.contacts[key];
-        console.log(key, element);
         errors[key] = []
         for (let index = 0; index < element.validators.length; index++) {
           const validators = element.validators[index].split(":")

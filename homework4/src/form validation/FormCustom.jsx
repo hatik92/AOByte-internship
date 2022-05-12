@@ -66,7 +66,6 @@ export class FormCustom extends Component {
       }
     }
     const errors = schema.validate(payload);
-    console.log(errors);
     for (const key in errors) {
       if (Object.hasOwnProperty.call(errors, key)) {
         const element = errors[key];
