@@ -72,7 +72,7 @@ export class FormCustom extends Component {
         const element = errors[key];
         let errorMessages = ''
         for (let index = 0; index < element.length; index++) {
-          errorMessages += element[index]+', '
+          errorMessages += element[index]+' '
         }
         this.setState(state => ({
           error: {
@@ -88,17 +88,17 @@ export class FormCustom extends Component {
   render() {
     return <>
         <form onSubmit={this.validateHandler}>
-          <Input name='firstName' onChange={this.onChange} />
+          <Input name='firstName' onChange={this.onChange} label='First name:' />
           <ErrorMessage name='firstName' errors={this.state.error.firstName} />
-          <Email name='email' onChange={this.onChange} />
+          <Email name='email' onChange={this.onChange} label='Email:' />
           <ErrorMessage name='email' errors={this.state.error.email} />
-          <Numeric name='age' onChange={this.onChange} />
+          <Numeric name='age' onChange={this.onChange} label='Age:' />
           <ErrorMessage name='age' errors={this.state.error.age} />
-          <Passport name='passport' onChange={this.onChange} />
+          <Passport name='passport' onChange={this.onChange} label='Passport:' />
           <ErrorMessage name='passport' errors={this.state.error.passport} />
-          <Url name='website' onChange={this.onChange} />
+          <Url name='website' onChange={this.onChange} label='Url:' />
           <ErrorMessage name='website' errors={this.state.error.website} />
-          <PhoneNumbers name='phoneNumbers' onChange={this.onChange} />
+          <PhoneNumbers name='phoneNumbers' onChange={this.onChange} label='Phone number:' />
           <ErrorMessage name='phoneNumbers' errors={this.state.error.phoneNumbers} />
           <Button type='submit' />
         </form>
@@ -111,56 +111,62 @@ export default FormCustom
 const ErrorMessage = ({name, errors}) => {
   return (
     <>
-      <p name={name}>{errors}</p>
+      <p className='text-danger' name={name}>{errors}</p>
     </>
   )
 }
 
-const Input = ({name, onChange}) => {
+const Input = ({name, onChange, label}) => {
   return (
     <div>
-      <input name={name} onChange={onChange}/>
+      {label && <label for={name}>{label}</label> }
+      <input className='form-control' name={name} onChange={onChange}/>
     </div>
   )
 }
 
-const Numeric = ({name, onChange}) => {
+const Numeric = ({name, onChange, label}) => {
   return (
     <div>
-      <input type='number' name={name} onChange={onChange}/>
+      {label && <label for={name}>{label}</label> }
+      <input className='form-control' type='number' name={name} onChange={onChange}/>
     </div>
   )
 }
 
 
-const Email = ({name, onChange}) => {
+const Email = ({name, onChange, label}) => {
   return (
     <div>
-      <input type='text' name={name} onChange={onChange}/>
+      {label && <label for={name}>{label}</label> }
+      <input className='form-control' type='text' name={name} onChange={onChange}/>
     </div>
   )
 }
 
-const Passport = ({name, onChange}) => {
+const Passport = ({name, onChange, label}) => {
   return (
     <div>
-      <input type='text' name={name} onChange={onChange} />
+      {label && <label for={name}>{label}</label> }
+      <input className='form-control' type='text' name={name} onChange={onChange} />
     </div>
   )
 }
 
-const Url = ({name, onChange}) => {
+const Url = ({name, onChange, label}) => {
   return (
     <div>
-      <input type='text' name={name} onChange={onChange} />
+      {label && <label for={name}>{label}</label> }
+      <input className='form-control' type='text' name={name} onChange={onChange} />
     </div>
   )
 }
 
-const PhoneNumbers = ({name, onChange}) => {
+const PhoneNumbers = ({name, onChange, label}) => {
   return (
     <div>
-      <input type='text' name={name} onChange={onChange} />
+      {label && <label for={name}>{label}</label> }
+      <input className='form-control' type='text' name={name} onChange={onChange} />
     </div>
   )
 }
@@ -168,7 +174,7 @@ const PhoneNumbers = ({name, onChange}) => {
 const Button = ({type}) => {
   return (
     <div>
-      <input type={type}/>
+      <input className='form-control' type={type}/>
     </div>
   )
 }
