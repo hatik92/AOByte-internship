@@ -1,24 +1,24 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/homework4/node_modules
-/homework4/.pnp
-/homework4/.pnp.js
+*/node_modules
+*/.pnp
+*/.pnp.js
 
 # testing
-/homework4/coverage
+*/coverage
 
 # production
-/homework4/build
+*/build
 
 # misc
-/homework4/.DS_Store
-/homework4/.env.local
-/homework4/.env.development.local
-/homework4/.env.test.local
-/homework4/.env.production.local
+*/.DS_Store
+*/.env.local
+*/.env.development.local
+*/.env.test.local
+*/.env.production.local
 
-/homework4/npm-debug.log*
-/homework4/yarn-debug.log*
-/homework4/yarn-error.log*
+*/npm-debug.log*
+*/yarn-debug.log*
+*/yarn-error.log*
 homeworkes1-3/config.dev.js
