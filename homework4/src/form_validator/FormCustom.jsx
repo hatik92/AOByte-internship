@@ -118,7 +118,7 @@ const ErrorMessage = ({name, errors}) => {
 const Input = ({name, onChange, label}) => {
   return (
     <div>
-      {label && <label for={name}>{label}</label> }
+      {label && <label htmlFor={name}>{label}</label> }
       <input className='form-control' name={name} onChange={onChange}/>
     </div>
   )
@@ -127,7 +127,7 @@ const Input = ({name, onChange, label}) => {
 const Numeric = ({name, onChange, label}) => {
   return (
     <div>
-      {label && <label for={name}>{label}</label> }
+      {label && <label htmlFor={name}>{label}</label> }
       <input className='form-control' type='number' name={name} onChange={onChange}/>
     </div>
   )
@@ -137,7 +137,7 @@ const Numeric = ({name, onChange, label}) => {
 const Email = ({name, onChange, label}) => {
   return (
     <div>
-      {label && <label for={name}>{label}</label> }
+      {label && <label htmlFor={name}>{label}</label> }
       <input className='form-control' type='text' name={name} onChange={onChange}/>
     </div>
   )
@@ -146,7 +146,7 @@ const Email = ({name, onChange, label}) => {
 const Passport = ({name, onChange, label}) => {
   return (
     <div>
-      {label && <label for={name}>{label}</label> }
+      {label && <label htmlFor={name}>{label}</label> }
       <input className='form-control' type='text' name={name} onChange={onChange} />
     </div>
   )
@@ -155,7 +155,7 @@ const Passport = ({name, onChange, label}) => {
 const Url = ({name, onChange, label}) => {
   return (
     <div>
-      {label && <label for={name}>{label}</label> }
+      {label && <label htmlFor={name}>{label}</label> }
       <input className='form-control' type='text' name={name} onChange={onChange} />
     </div>
   )
@@ -164,7 +164,7 @@ const Url = ({name, onChange, label}) => {
 const PhoneNumbers = ({name, onChange, label}) => {
   return (
     <div>
-      {label && <label for={name}>{label}</label> }
+      {label && <label htmlFor={name}>{label}</label> }
       <input className='form-control' type='text' name={name} onChange={onChange} />
     </div>
   )

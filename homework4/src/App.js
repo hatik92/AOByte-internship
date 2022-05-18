@@ -1,9 +1,9 @@
 import './App.css';
 import React from 'react';
 import posts_data from './post-data.json';
-// import Pool from './components/pool/Pool';
-// import Lists from './components/lists/Lists';
-// import Pagination from './common/Pagination';
+import Pool from './components/Pool/index';
+import Lists from './components/Lists/index';
+import Pagination from './common/Pagination';
 import FormCustom from './form validation/FormCustom';
 
 class App extends React.Component {
@@ -89,7 +89,7 @@ class App extends React.Component {
 
     return (
     <>
-      {/* <div className='post_container'>
+      <div className='post_container'>
         <div className='pool_block'>
           <input
             className='form-control'
@@ -106,7 +106,7 @@ class App extends React.Component {
           />
         </div>
         <Lists posts={this.state.posts} onChangeDisabled={this.onChangeDisabled} buttonDisabled={this.state.buttonDisabled} />
-      </div> */}
+      </div>
       <FormCustom />
     </>
     );

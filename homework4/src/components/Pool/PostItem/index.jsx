@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Comments from './comments/Comments';
-import styles from './postItem.module.css'
+import Comments from './Comments/index';
+import styles from './style.module.css'
 import Picker from 'emoji-picker-react';
 import classNames from 'classnames/bind';
 
@@ -42,9 +42,9 @@ export class PostItem extends Component {
             <p className="card-text">{this.props.post.body}</p>
             <Comments comments={this.props.post.comments} addAnswer={this.props.addAnswer} postId={this.props.post.id} />
             <form onSubmit={this.onSubmit} key={this.props.post.id}>
-              <div class="form-group row">
-                <label for="newComment" class="col-sm-4 col-form-label">New comment</label>
-                <div class="col-sm-8">
+              <div className="form-group row">
+                <label htmlFor="newComment" className="col-sm-4 col-form-label">New comment</label>
+                <div className="col-sm-8">
                   <div className={styles.emojiIn}>
                     <input
                       name='body'
@@ -61,9 +61,9 @@ export class PostItem extends Component {
                   </div>
                 </div>
               </div>
-              <div class="form-group row">
-                <label for="inputRate" class="col-sm-4 col-form-label">Rate</label>
-                <div class="col-sm-8">
+              <div className="form-group row">
+                <label htmlFor="inputRate" className="col-sm-4 col-form-label">Rate</label>
+                <div className="col-sm-8">
                   <input
                     name='rate'
                     type='number'

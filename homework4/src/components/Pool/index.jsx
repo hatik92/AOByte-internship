@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import styles from './pool.module.css'
-import PostItem from './postItem/PostItem';
+import styles from './style.module.css'
+import PostItem from './PostItem/index';
 
 class Pool extends Component {    
     render() {

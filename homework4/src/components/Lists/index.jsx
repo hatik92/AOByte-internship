@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './lists.module.css'
+import styles from './style.module.css'
 
 class Lists extends Component {
     constructor(props) {

@@ -38,11 +38,11 @@ export class CommentItem extends Component {
         <p className="text-primary" style={{ cursor: 'pointer' }} onClick={this.onShowReplyForm}> {this.state.replyShow ? 'Cancel' : 'Reply'} </p>
         {this.state.replyShow &&
           <form onSubmit={this.onSubmit}>
-            <div class="row">
-              <div class="col">
+            <div className="row">
+              <div className="col">
                 <input className='form-control' name='body' onChange={this.onChange} />
               </div>
-              <div class="col">
+              <div className="col">
                 <button className='btn btn-primary'>Send</button>
               </div>
             </div>
