@@ -1,6 +1,5 @@
-.post_container {
-  display: flex;
-}
-.pool_block {
-    width: 50%;
+.App {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
