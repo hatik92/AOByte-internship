@@ -1,0 +1,19 @@
+nav {
+  width: 20%;
+  height: 100vh;
+  position: fixed;
+  background-color: #eae7dc;
+}
+
+
+
+
+
+.pagesSection {
+  width: 100%;
+  margin-left: 25%;
+}
+
+.inputs {
+  margin: 10px;
+}

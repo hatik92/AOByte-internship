@@ -1,21 +1,25 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 
-function Input({ id, url, type }) {
+function FormItem({ id, url, type }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "input",
-    item: { id: id },
+    item: { id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   }));
   return (
-    <input
+    <div
       ref={drag}
-      type={type}
+      style={{
+        opacity: isDragging ? 0.5 : 1,
+        fontWeight: 'bold',
+        cursor: 'move',
+      }}
       // style={{ border: isDragging ? "5px solid pink" : "0px", boxSizing: "border-box" }}
-    />
+    >{type}</div>
   );
 }
 
-export default Input;
+export default FormItem;
